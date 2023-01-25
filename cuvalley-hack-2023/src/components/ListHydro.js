@@ -18,7 +18,7 @@ const Wrapper = styled.article`
   .row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: minmax(100px, auto);
+    grid-auto-rows: minmax(30px, auto);
     border: 1px solid black;
     .col1 {
       border: 1px solid black;
