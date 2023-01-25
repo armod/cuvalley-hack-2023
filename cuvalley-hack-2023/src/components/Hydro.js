@@ -1,6 +1,7 @@
 import React from 'react'
 import { useGlobalContext } from '../context'
 import data from '../zlewnia-stacje'
+import ListHydro from './ListHydro'
 
 const Hydro = () => {
   const { dataHydro } = useGlobalContext()
@@ -10,7 +11,8 @@ const Hydro = () => {
         const { id_stacji, stacja, stan_wody } = item
         for (let i = 0; i < data.length; i++) {
           if (data[i].id == id_stacji) {
-            console.log(stacja, stan_wody, 'cm')
+            // console.log(stacja, stan_wody)
+            return <ListHydro key={id_stacji} {...item} />
           }
         }
       })}
