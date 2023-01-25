@@ -7,32 +7,32 @@ const hydro = 'https://danepubliczne.imgw.pl/api/data/hydro'
 const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
-  const [dataMeteo, setDataMeteo] = useState()
-  const [dataHydro, setDataHydro] = useState()
+  const [dataMeteo, setDataMeteo] = useState([])
+  const [dataHydro, setDataHydro] = useState([])
 
   const fetchDataMeteo = async () => {
     const response = await fetch(meteo)
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
     setDataMeteo(data)
-    console.log('added')
+    // console.log('added')
   }
   const fetchDataHydro = async () => {
     const response = await fetch(hydro)
     const data = await response.json()
     console.log(data)
     setDataHydro(data)
+    // console.log(dataHydro)
   }
 
   useEffect(() => {
     fetchDataMeteo()
-    console.log(dataMeteo)
+    // console.log(dataMeteo)
     fetchDataHydro()
-    console.log(dataHydro)
   }, [])
 
   return (
-    <AppContext.Provider value={'hello world'}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ dataHydro }}>{children}</AppContext.Provider>
   )
 }
 export const useGlobalContext = () => {

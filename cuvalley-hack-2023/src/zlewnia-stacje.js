@@ -184,10 +184,6 @@ const data = [
     stacja: 'KRZYŻANOWICE',
   },
   {
-    id: 151170010,
-    stacja: 'KRZYŻANOWICE',
-  },
-  {
     id: 150160040,
     stacja: 'KUDOWA-ZDRÓJ-ZAKRZE',
   },
@@ -238,10 +234,6 @@ const data = [
   {
     id: 150160130,
     stacja: 'MOŚCISKO',
-  },
-  {
-    id: 151170090,
-    stacja: 'NAMYSŁÓW',
   },
   {
     id: 151170090,
@@ -378,10 +370,6 @@ const data = [
   {
     id: 150170010,
     stacja: 'ZBOROWICE',
-  },
-  {
-    id: 151170050,
-    stacja: 'ZBYTOWA',
   },
   {
     id: 151170050,
