@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 
 const meteo = 'https://danepubliczne.imgw.pl/api/data/synop'
-const hydro = 'http://danepubliczne.imgw.pl/api/data/hydro/'
+const hydro = 'https://danepubliczne.imgw.pl/api/data/hydro'
+// const wind = 'https://api.gios.gov.pl/pjp-api/rest/station/findAll'
 
 const AppContext = React.createContext()
 
@@ -13,16 +13,22 @@ const AppProvider = ({ children }) => {
   const fetchDataMeteo = async () => {
     const response = await fetch(meteo)
     const data = await response.json()
+    console.log(data)
     setDataMeteo(data)
+    console.log('added')
   }
   const fetchDataHydro = async () => {
     const response = await fetch(hydro)
     const data = await response.json()
+    console.log(data)
     setDataHydro(data)
   }
 
   useEffect(() => {
     fetchDataMeteo()
+    console.log(dataMeteo)
+    fetchDataHydro()
+    console.log(dataHydro)
   }, [])
 
   return (

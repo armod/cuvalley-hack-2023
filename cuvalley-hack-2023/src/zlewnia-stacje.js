@@ -1,0 +1,392 @@
+const data = [
+  {
+    149180030: 150160220,
+    ŁAZISKA: 'BARDO',
+  },
+  {
+    149180030: 150170050,
+    ŁAZISKA: 'BIAŁA NYSKA',
+  },
+  {
+    149180030: 150160250,
+    ŁAZISKA: 'BIAŁOBRZEZIE',
+  },
+  {
+    149180030: 150150130,
+    ŁAZISKA: 'BŁAŻKOWA',
+  },
+  {
+    149180030: 151170060,
+    ŁAZISKA: 'BOGDAJ',
+  },
+  {
+    149180030: 151160180,
+    ŁAZISKA: 'BOGDASZOWICE',
+  },
+  {
+    149180030: 150180040,
+    ŁAZISKA: 'BOJANÓW',
+  },
+  {
+    149180030: 150160280,
+    ŁAZISKA: 'BORÓW',
+  },
+  {
+    149180030: 150170170,
+    ŁAZISKA: 'BRANICE',
+  },
+  {
+    149180030: 150170090,
+    ŁAZISKA: 'BRZEG',
+  },
+  {
+    149180030: 151160170,
+    ŁAZISKA: 'BRZEG DOLNY',
+  },
+  {
+    149180030: 151160040,
+    ŁAZISKA: 'BUKOWNA',
+  },
+  {
+    149180030: 150150120,
+    ŁAZISKA: 'BUKÓWKA',
+  },
+  {
+    149180030: 150160150,
+    ŁAZISKA: 'BYSTRZYCA KŁODZKA',
+  },
+  {
+    149180030: 149180020,
+    ŁAZISKA: 'CHAŁUPKI',
+  },
+  {
+    149180030: 151150180,
+    ŁAZISKA: 'CHOJNÓW',
+  },
+  {
+    149180030: 150160030,
+    ŁAZISKA: 'CHWALISZÓW',
+  },
+  {
+    149180030: 150170220,
+    ŁAZISKA: 'DOBRA',
+  },
+  {
+    149180030: 150170200,
+    ŁAZISKA: 'DOMARADZ',
+  },
+  {
+    149180030: 151160050,
+    ŁAZISKA: 'DUNINO',
+  },
+  {
+    149180030: 150160140,
+    ŁAZISKA: 'DZIERŻONIÓW',
+  },
+  {
+    149180030: 150180220,
+    ŁAZISKA: 'GLIWICE',
+  },
+  {
+    149180030: 151160060,
+    ŁAZISKA: 'GŁOGÓW',
+  },
+  {
+    149180030: 150170070,
+    ŁAZISKA: 'GŁUCHOŁAZY',
+  },
+  {
+    149180030: 150160290,
+    ŁAZISKA: 'GNIECHOWICE',
+  },
+  {
+    149180030: 150160100,
+    ŁAZISKA: 'GORZUCHÓW',
+  },
+  {
+    149180030: 150180080,
+    ŁAZISKA: 'GRABÓWKA',
+  },
+  {
+    149180030: 151160190,
+    ŁAZISKA: 'JARNOŁTÓW',
+  },
+  {
+    149180030: 150170080,
+    ŁAZISKA: 'JARNOŁTÓWEK',
+  },
+  {
+    149180030: 151160090,
+    ŁAZISKA: 'JAWOR',
+  },
+  {
+    149180030: 150160060,
+    ŁAZISKA: 'JUGOWICE',
+  },
+  {
+    149180030: 150160270,
+    ŁAZISKA: 'KAMIENIEC ZĄBKOWICKI',
+  },
+  {
+    149180030: 150160010,
+    ŁAZISKA: 'KAMIENNA GÓRA',
+  },
+  {
+    149180030: 150180010,
+    ŁAZISKA: 'KAMIONKA',
+  },
+  {
+    149180030: 151160220,
+    ŁAZISKA: 'KANCLERZOWICE',
+  },
+  {
+    149180030: 150170150,
+    ŁAZISKA: 'KARŁOWICE',
+  },
+  {
+    149180030: 150160180,
+    ŁAZISKA: 'KŁODZKO',
+  },
+  {
+    149180030: 150170100,
+    ŁAZISKA: 'KOPICE',
+  },
+  {
+    149180030: 151160200,
+    ŁAZISKA: 'KORZEŃSKO',
+  },
+  {
+    149180030: 150150110,
+    ŁAZISKA: 'KOWARY',
+  },
+  {
+    149180030: 150180030,
+    ŁAZISKA: 'KOŹLE',
+  },
+  {
+    149180030: 150170240,
+    ŁAZISKA: 'KRAPKOWICE',
+  },
+  {
+    149180030: 150160120,
+    ŁAZISKA: 'KRASKÓW',
+  },
+  {
+    149180030: 150170210,
+    ŁAZISKA: 'KRZYWA GÓRA',
+  },
+  {
+    149180030: 149180010,
+    ŁAZISKA: 'KRZYŻANOWICE',
+  },
+  {
+    149180030: 151170010,
+    ŁAZISKA: 'KRZYŻANOWICE',
+  },
+  {
+    149180030: 151170010,
+    ŁAZISKA: 'KRZYŻANOWICE',
+  },
+  {
+    149180030: 150160040,
+    ŁAZISKA: 'KUDOWA-ZDRÓJ-ZAKRZE',
+  },
+  {
+    149180030: 150160230,
+    ŁAZISKA: 'LĄDEK-ZDRÓJ',
+  },
+  {
+    149180030: 150180070,
+    ŁAZISKA: 'LENARTOWICE',
+  },
+  {
+    149180030: 150160070,
+    ŁAZISKA: 'LUBACHÓW',
+  },
+  {
+    149180030: 150160090,
+    ŁAZISKA: 'ŁAŻANY',
+  },
+  {
+    149180030: 151170040,
+    ŁAZISKA: 'ŁĄKI',
+  },
+  {
+    149180030: 150150090,
+    ŁAZISKA: 'ŁOMNICA',
+  },
+  {
+    149180030: 151160150,
+    ŁAZISKA: 'MALCZYCE',
+  },
+  {
+    149180030: 150170320,
+    ŁAZISKA: 'MALERZOWICE WIELKIE',
+  },
+  {
+    149180030: 150160160,
+    ŁAZISKA: 'MIETKÓW',
+  },
+  {
+    149180030: 150160190,
+    ŁAZISKA: 'MIĘDZYLESIE',
+  },
+  {
+    149180030: 150160130,
+    ŁAZISKA: 'MOŚCISKO',
+  },
+  {
+    149180030: 151170090,
+    ŁAZISKA: 'NAMYSŁÓW',
+  },
+  {
+    149180030: 151170090,
+    ŁAZISKA: 'NAMYSŁÓW',
+  },
+  {
+    149180030: 150170120,
+    ŁAZISKA: 'NIEMODLIN',
+  },
+  {
+    149180030: 150170060,
+    ŁAZISKA: 'NYSA',
+  },
+  {
+    149180030: 151170080,
+    ŁAZISKA: 'ODOLANÓW',
+  },
+  {
+    149180030: 149180300,
+    ŁAZISKA: 'OLZA',
+  },
+  {
+    149180030: 150170030,
+    ŁAZISKA: 'OŁAWA',
+  },
+  {
+    149180030: 150170040,
+    ŁAZISKA: 'OŁAWA',
+  },
+  {
+    149180030: 151160140,
+    ŁAZISKA: 'OSETNO',
+  },
+  {
+    149180030: 151160100,
+    ŁAZISKA: 'PIĄTNICA',
+  },
+  {
+    149180030: 150170110,
+    ŁAZISKA: 'PRUDNIK',
+  },
+  {
+    149180030: 150180170,
+    ŁAZISKA: 'PYSKOWICE',
+  },
+  {
+    149180030: 150180160,
+    ŁAZISKA: 'PYSKOWICE-DZIERŻNO',
+  },
+  {
+    149180030: 150180060,
+    ŁAZISKA: 'RACIBÓRZ-MIEDONIA',
+  },
+  {
+    149180030: 150170180,
+    ŁAZISKA: 'RACŁAWICE ŚLĄSKIE',
+  },
+  {
+    149180030: 150180110,
+    ŁAZISKA: 'RUDA KOZIELSKA',
+  },
+  {
+    149180030: 150180280,
+    ŁAZISKA: 'RYBNIK-GOTARTOWICE',
+  },
+  {
+    149180030: 150180130,
+    ŁAZISKA: 'RYBNIK-STODOŁY',
+  },
+  {
+    149180030: 151160160,
+    ŁAZISKA: 'RYDZYNA',
+  },
+  {
+    149180030: 151160080,
+    ŁAZISKA: 'RZESZOTARY',
+  },
+  {
+    149180030: 151160020,
+    ŁAZISKA: 'RZYMÓWKA',
+  },
+  {
+    149180030: 150170140,
+    ŁAZISKA: 'SKOROGOSZCZ',
+  },
+  {
+    149180030: 150160110,
+    ŁAZISKA: 'SZALEJÓW DOLNY',
+  },
+  {
+    149180030: 151160130,
+    ŁAZISKA: 'ŚCINAWA',
+  },
+  {
+    149180030: 151160230,
+    ŁAZISKA: 'ŚLĘZA',
+  },
+  {
+    149180030: 150160020,
+    ŁAZISKA: 'ŚWIEBODZICE',
+  },
+  {
+    149180030: 151150170,
+    ŁAZISKA: 'ŚWIERZAWA',
+  },
+  {
+    149180030: 150160080,
+    ŁAZISKA: 'TŁUMACZÓW',
+  },
+  {
+    149180030: 151170030,
+    ŁAZISKA: 'TRESTNO',
+  },
+  {
+    149180030: 150170130,
+    ŁAZISKA: 'UJŚCIE NYSY KŁODZKIEJ',
+  },
+  {
+    149180030: 150160210,
+    ŁAZISKA: 'WILKANÓW',
+  },
+  {
+    149180030: 151160070,
+    ŁAZISKA: 'WINNICA',
+  },
+  {
+    149180030: 150150100,
+    ŁAZISKA: 'WOJANÓW',
+  },
+  {
+    149180030: 151150160,
+    ŁAZISKA: 'ZAGRODNO',
+  },
+  {
+    149180030: 150170010,
+    ŁAZISKA: 'ZBOROWICE',
+  },
+  {
+    149180030: 151170050,
+    ŁAZISKA: 'ZBYTOWA',
+  },
+  {
+    149180030: 151170050,
+    ŁAZISKA: 'ZBYTOWA',
+  },
+  {
+    149180030: 150160200,
+    ŁAZISKA: 'ŻELAZNO',
+  },
+]
+
+export default data
