@@ -15,8 +15,7 @@ const Hydro = () => {
             return (
               <h2 key={id_stacji}>
                 Stacja: {stacja} {/* dla Głogowa */}
-                <span> </span>
-                Stan wody: {stan_wody}cm
+                <span> </span>- stan wody: {stan_wody}cm
               </h2>
             )
           }
@@ -24,8 +23,6 @@ const Hydro = () => {
       </div>
       <div className='nazwa'>
         <h2>Zlewnia - stacje hydrologiczne</h2>
-        <div>stacja</div>
-        <div>stan wody [cm]</div>
       </div>
 
       {dataHydro.map((item) => {

@@ -11,12 +11,10 @@ const Opad = () => {
       <div>
         {dataOpad.map((item, index) => {
           const { name } = item.location
-          if (name === 'GLOGOW') {
+          if (name.toUpperCase() == 'GLOGOW') {
             return (
               <h2 key={index}>
                 Stacja: {name} {/* dla Głogowa */}
-                {/* <span> </span> */}
-                {/* Suma opadów: {stan_wody}cm */}
               </h2>
             )
           }
@@ -30,8 +28,6 @@ const Opad = () => {
       {dataOpad.map((item, index) => {
         const { name } = item.location
         const { precip_mm } = item.current
-
-        // console.log(stacja, stan_wody)
         return <ListOpad key={index} name={name} precip_mm={precip_mm} />
       })}
     </Wrapper>
