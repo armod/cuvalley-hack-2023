@@ -21,4 +21,5 @@ const Wrapper = styled.section`
   border: 1px solid red;
   width: 90vw;
   margin: 0 auto;
+  max-width: 1200px;
 `
