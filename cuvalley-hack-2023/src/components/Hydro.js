@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { useGlobalContext } from '../context'
 import data from '../zlewnia-stacje'
 import ListHydro from './ListHydro'
@@ -23,7 +23,7 @@ const Hydro = () => {
         })}
       </div>
       <div className='nazwa'>
-        <h2>Zlewnia - stacje</h2>
+        <h2>Zlewnia - stacje hydrologiczne</h2>
         <div>stacja</div>
         <div>stan wody [cm]</div>
       </div>
@@ -49,9 +49,5 @@ const Wrapper = styled.section`
     display: flex;
     justify-content: center;
     border: 2px solid red;
-    div {
-      display: flex;
-      flex-direction: row;
-    }
   }
 `
