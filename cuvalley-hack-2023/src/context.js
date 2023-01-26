@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react'
 import stacjeMeteo from './zlewnia-stacje-meteo'
+
 const meteo = 'https://danepubliczne.imgw.pl/api/data/synop'
 const hydro = 'https://danepubliczne.imgw.pl/api/data/hydro'
 const forecast_api =
@@ -28,10 +29,16 @@ const AppProvider = ({ children }) => {
     // console.log(dataHydro)
   }
   const fetchDataOpad = async () => {
-    const response = await fetch(forecast_api + 'GLOGOW')
-    const data = await response.json()
+    const data = await Promise.all(
+      stacjeMeteo.map((stacja) =>
+        fetch(forecast_api + stacja).then((res) => res.json())
+      )
+    )
     console.log(data)
     setDataOpad(data)
+    // const response = await fetch(forecast_api + 'GLOGOW')
+    // const data = await response.json()
+    // setDataOpad(data)
     // console.log(data)
   }
 

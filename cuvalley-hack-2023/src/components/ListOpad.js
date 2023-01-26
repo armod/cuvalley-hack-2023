@@ -1,14 +1,12 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
-const ListHydro = ({ id_stacji, stacja, stan_wody }) => {
+const ListHydro = ({ name, precip_mm }) => {
   return (
     <Wrapper>
       <div className='row'>
-        <div className='col1'>
-          {stacja} ({id_stacji})
-        </div>
-        <div className='col2'>{stan_wody}cm</div>
+        <div className='col1'>{name}</div>
+        <div className='col2'>{precip_mm} mm</div>
       </div>
     </Wrapper>
   )
