@@ -3,13 +3,15 @@ import styled from 'styled-components'
 
 const Navbar = () => {
   const currentTime = new Date()
+  var currentDate = new Date()
+  console.log(currentDate)
   const rok = currentTime.getFullYear()
-  const miesiac = currentTime.getMonth()
+  const miesiac = currentTime.getMonth() + 1
   const dzien = currentTime.getDay()
   return (
     <Wrapper>
       <div className='data'>
-        {rok}-{miesiac > 10 ? miesiac + 1 : '0' + (miesiac + 1)}-
+        {rok}-{miesiac > 10 ? miesiac : '0' + miesiac}-
         {dzien < 10 ? '0' + dzien : dzien}
       </div>
       <span>;;</span>
