@@ -14,7 +14,7 @@ const Hydro = () => {
           if (id_stacji === '151160060') {
             return (
               <h2 key={id_stacji}>
-                Stacja: {stacja}
+                Stacja: {stacja} {/* dla Głogowa */}
                 <span> </span>
                 Stan wody: {stan_wody}cm
               </h2>
