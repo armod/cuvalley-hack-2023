@@ -1,15 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import Hydro from '../components/Hydro'
-import ListHydro from '../components/ListHydro'
 import Opad from '../components/Opad'
+import ReadHydroXLSX from '../components/ReadHydroXLSX'
 
 const Home = () => {
   return (
     <Wrapper>
-      <Hydro>
-        <ListHydro />
-      </Hydro>
+      <ReadHydroXLSX />
+      <Hydro />
       <Opad />
     </Wrapper>
   )
@@ -18,6 +17,6 @@ const Home = () => {
 export default Home
 
 const Wrapper = styled.section`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 `

@@ -39,6 +39,8 @@ const Wrapper = styled.section`
   border-radius: 15px;
   padding: 15px;
   margin: 15px;
+  grid-row: 2;
+  grid-column: 2;
   .nazwa {
     display: flex;
     /* justify-content: center; */

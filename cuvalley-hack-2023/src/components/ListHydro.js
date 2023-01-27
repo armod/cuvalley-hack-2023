@@ -6,7 +6,7 @@ const ListHydro = ({ id_stacji, stacja, stan_wody }) => {
     <Wrapper>
       <div className='row'>
         <div className='col1'>
-          {stacja} ({id_stacji})
+          ({id_stacji}) {stacja}
         </div>
         <div className='col2'>{stan_wody}cm</div>
       </div>
