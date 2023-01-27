@@ -19,13 +19,13 @@ export default ListHydro
 const Wrapper = styled.article`
   .row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     /* grid-auto-rows: minmax(30px, auto); */
-    border: 1px solid black;
+    /* border: 1px solid black; */
     .col1,
     .col2 {
       border: 1px solid black;
-      font-size: 1.2rem;
+      /* font-size: 1.2rem; */
     }
   }
 `

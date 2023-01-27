@@ -8,6 +8,9 @@ const Opad = () => {
   const { dataOpad } = useGlobalContext()
   return (
     <Wrapper>
+      <div className='nazwa'>
+        <h2>Zlewnia - stacje meteorologiczne</h2>
+      </div>
       <div>
         {dataOpad.map((item, index) => {
           const { name } = item.location
@@ -20,11 +23,6 @@ const Opad = () => {
           }
         })}
       </div>
-
-      <div className='nazwa'>
-        <h2>Zlewnia - stacje meteorologiczne</h2>
-      </div>
-
       {dataOpad.map((item, index) => {
         const { name } = item.location
         const { precip_mm } = item.current
@@ -37,9 +35,12 @@ const Opad = () => {
 export default Opad
 
 const Wrapper = styled.section`
+  border: 2px #de824e solid;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px;
   .nazwa {
     display: flex;
-    justify-content: center;
-    border: 2px solid red;
+    /* justify-content: center; */
   }
 `

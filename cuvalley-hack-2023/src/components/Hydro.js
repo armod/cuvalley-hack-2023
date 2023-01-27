@@ -8,6 +8,9 @@ const Hydro = () => {
   const { dataHydro } = useGlobalContext()
   return (
     <Wrapper>
+      <div className='nazwa'>
+        <h2>Zlewnia - stacje hydrologiczne</h2>
+      </div>
       <div>
         {dataHydro.map((item) => {
           const { id_stacji, stacja, stan_wody } = item
@@ -20,9 +23,6 @@ const Hydro = () => {
             )
           }
         })}
-      </div>
-      <div className='nazwa'>
-        <h2>Zlewnia - stacje hydrologiczne</h2>
       </div>
 
       {dataHydro.map((item) => {
@@ -42,9 +42,12 @@ const Hydro = () => {
 export default Hydro
 
 const Wrapper = styled.section`
+  border: 2px #de824e solid;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px;
   .nazwa {
     display: flex;
-    justify-content: center;
-    border: 2px solid red;
+    /* justify-content: center; */
   }
 `

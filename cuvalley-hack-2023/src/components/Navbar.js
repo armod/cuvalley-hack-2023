@@ -8,6 +8,11 @@ const Navbar = () => {
   const dzien = currentTime.getDate()
   return (
     <Wrapper>
+      <img
+        className='logo'
+        src='https://cuvalley.com/wp-content/uploads/2021/04/CuValley_logo_top_1.png'
+        alt='logo'
+      />
       <div className='data'>
         {rok}-{miesiac > 10 ? miesiac : '0' + miesiac}-
         {dzien < 10 ? '0' + dzien : dzien}
@@ -34,7 +39,12 @@ const Wrapper = styled.nav`
   justify-content: center;
   align-items: center;
   margin: 5px;
-  border: 1px solid red;
+  border: 2px #de824e solid;
+  border-radius: 15px;
+  padding: 15px;
+  .logo {
+    background: #de824e;
+  }
   .data {
     margin-right: 2rem;
   }
