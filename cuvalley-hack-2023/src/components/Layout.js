@@ -18,7 +18,9 @@ export default Layout
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
+  border: 2px #de824e solid;
+  border-radius: 15px;
+  padding: 15px;
   width: 90vw;
   margin: 0 auto;
   max-width: 1200px;

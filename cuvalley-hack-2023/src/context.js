@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useEffect, useContext, useState, useRef } from 'react'
 import { read, utils } from 'xlsx'
 import stacjeMeteo from './zlewnia-stacje-meteo'
 
@@ -15,6 +15,7 @@ const AppProvider = ({ children }) => {
   const [dataHydro, setDataHydro] = useState([])
   const [dataOpad, setDataOpad] = useState([])
   const [dataHydroXLSX, setDataHydroXLSX] = useState([])
+  const [dataMeteoXLSX, setDataMeteoXLSX] = useState([])
 
   // fetch
   const fetchDataMeteo = async () => {
@@ -48,7 +49,7 @@ const AppProvider = ({ children }) => {
     // console.log(data)
   }
 
-  //********ładowanie z pliku ręczne********
+  //********ładowanie z pliku hydro ręczne********
   const handleHydroXLSX = (file) => {
     const reader = new FileReader()
     reader.onload = (e) => {
@@ -62,12 +63,26 @@ const AppProvider = ({ children }) => {
     reader.readAsBinaryString(file)
     // console.log(file)
   }
+  //********ładowanie z pliku meteo ręczne********
+  const handleMeteoXLSX = (file) => {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      const binary = '' + e.target.result
+      const workbook = read(binary, { type: 'binary' })
+      const sheet = workbook.Sheets[workbook.SheetNames[0]]
+      const jsonData = utils.sheet_to_json(sheet)
+      setDataMeteoXLSX(jsonData)
+      console.log(jsonData)
+    }
+    reader.readAsBinaryString(file)
+    // console.log(file)
+  }
 
   useEffect(() => {
     // fetchDataMeteo()
     fetchDataHydro()
     fetchDataOpad()
-  }, [])
+  }, [dataHydroXLSX])
 
   return (
     <AppContext.Provider
@@ -75,7 +90,9 @@ const AppProvider = ({ children }) => {
         dataHydro,
         dataOpad,
         handleHydroXLSX,
+        handleMeteoXLSX,
         dataHydroXLSX,
+        dataMeteoXLSX,
       }}
     >
       {children}

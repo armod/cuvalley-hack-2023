@@ -3,24 +3,24 @@ import styled from 'styled-components/macro'
 import { useGlobalContext } from '../context'
 
 const ReadHydroXLSX = () => {
-  const { handleHydroXLSX, dataHydroXLSX } = useGlobalContext()
+  const { handleMeteoXLSX, dataMeteoXLSX } = useGlobalContext()
   return (
     <Wrapper>
-      <label htmlFor='file-upload'>Wybierz plik z danymi hydro </label>
+      <label htmlFor='file-upload'>Wybierz plik z danymi meteo </label>
       <input
         id='file-upload'
         type='file'
         onChange={(e) => {
-          if (e.target.files[0].name == 'hydro.xlsx') {
-            handleHydroXLSX(e.target.files[0])
+          if (e.target.files[0].name == 'meteo.xlsx') {
+            handleMeteoXLSX(e.target.files[0])
             console.log(e.target.files[0].name)
           }
         }}
       />
       <div>
         Status:{' '}
-        {dataHydroXLSX.length > 1
-          ? 'Załadowano ' + dataHydroXLSX.length
+        {dataMeteoXLSX.length > 1
+          ? 'Załadowano ' + dataMeteoXLSX.length
           : 'Nie załadowano pliku'}
       </div>
       {/* <table>
@@ -49,6 +49,6 @@ const ReadHydroXLSX = () => {
 export default ReadHydroXLSX
 
 const Wrapper = styled.section`
-  grid-column: 1/2;
+  grid-column: 2/3;
   grid-row: 1;
 `

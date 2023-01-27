@@ -3,11 +3,16 @@ import styled from 'styled-components'
 import Hydro from '../components/Hydro'
 import Opad from '../components/Opad'
 import ReadHydroXLSX from '../components/ReadHydroXLSX'
+import ReadMeteoXLSX from '../components/ReadMeteoXLSX'
 
 const Home = () => {
   return (
     <Wrapper>
-      <ReadHydroXLSX />
+      <div className='load-files'>
+        <ReadHydroXLSX />
+        <div className='underline'></div>
+        <ReadMeteoXLSX />
+      </div>
       <Hydro />
       <Opad />
     </Wrapper>
@@ -19,4 +24,9 @@ export default Home
 const Wrapper = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  .load-files {
+    border: 2px #de824e solid;
+    border-radius: 15px;
+    padding: 15px;
+  }
 `
