@@ -63,7 +63,7 @@ const AppProvider = ({ children }) => {
       const sheet = workbook.Sheets[workbook.SheetNames[0]]
       const jsonData = utils.sheet_to_json(sheet)
       setDataHydroXLSX(jsonData)
-      console.log(jsonData)
+      console.log('hydro', jsonData)
     }
     reader.readAsBinaryString(file)
     // console.log(file)

@@ -5,6 +5,25 @@ import data from '../assets/zlewnia-stacje'
 import ListHydro from './ListHydro'
 import daneHydro from '../assets/hydro'
 
+function findRecord(data, search1, search2) {
+  let closest = { diff: Number.MAX_VALUE }
+  for (let i = 0; i < data.length; i++) {
+    if (
+      data[i]['GŁOGÓW (151160060)'] === search1 &&
+      data[i]['RACIBÓRZ-MIEDONIA (150180060)'] === search2
+    ) {
+      console.log('oba', data[i])
+      return data[i]
+    }
+    let diff = Math.abs(data[i]['GŁOGÓW (151160060)'] - search1)
+    if (diff < closest.diff) {
+      closest = { diff: diff, index: i }
+    }
+  }
+  console.log(data[closest.index])
+  return data[closest.index]
+}
+
 function filterArray(arr, num1, num2) {
   var result = arr.filter(function (obj) {
     if (obj.hasOwnProperty(num1) && obj.hasOwnProperty(num2)) {
@@ -45,12 +64,39 @@ function filterArray(arr, num1, num2) {
 
   var index = arr.indexOf(result[0])
   var nextTen = arr.slice(index, index + 10)
+  console.log(nextTen)
   return nextTen
+}
+
+function ResultTable({ filteredArray }) {
+  return (
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Key1</th>
+            <th>Key2</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredArray.map((item, index) => (
+            <tr key={index}>
+              <td>{item.key1}</td>
+              <td>{item.key2}</td>
+              <td>{item.value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
 }
 
 const Hydro = () => {
   const { dataHydro, dataHydroXLSX, stanWodyGlogow, stanWodyRaciborz } =
     useGlobalContext()
+  const [filteredArray, setFilteredArray] = useState([])
   const len = dataHydroXLSX.length
   const poziomWodyGlogow = Number(stanWodyGlogow.stan_wody)
   const poziomWodyRaciborz = Number(stanWodyRaciborz.stan_wody)
@@ -58,8 +104,23 @@ const Hydro = () => {
 
   console.log('poziom', poziomWodyGlogow, poziomWodyRaciborz)
 
+  const handleFilter = (arr, num1, num2) => {
+    setFilteredArray(findRecord(arr, num1, num2))
+  }
+
   return (
     <Wrapper>
+      <div>
+        <button
+          onClick={() =>
+            handleFilter(dataHydroXLSX, poziomWodyGlogow, poziomWodyRaciborz)
+          }
+        >
+          Filter
+        </button>
+        {/* <ResultTable filteredArray={filteredArray} /> */}
+      </div>
+
       <div className='info'>
         <h2>Zlewnia - stacje hydrologiczne</h2>
         {/* <h5>Data pomiaru: {dataPomiaru}</h5> */}
