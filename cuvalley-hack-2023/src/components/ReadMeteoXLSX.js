@@ -21,7 +21,7 @@ const ReadHydroXLSX = () => {
         Status:{' '}
         {dataMeteoXLSX.length > 1
           ? 'Załadowano ' + dataMeteoXLSX.length
-          : 'Nie załadowano pliku'}
+          : 'Nie załadowano odpowiedniego pliku'}
       </div>
       {/* <table>
         <thead>

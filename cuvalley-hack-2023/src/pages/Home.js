@@ -28,5 +28,6 @@ const Wrapper = styled.section`
     border: 2px #de824e solid;
     border-radius: 15px;
     padding: 15px;
+    margin: 15px;
   }
 `

@@ -8,8 +8,9 @@ const Opad = () => {
   const { dataOpad } = useGlobalContext()
   return (
     <Wrapper>
-      <div className='nazwa'>
+      <div className='info'>
         <h2>Zlewnia - stacje meteorologiczne</h2>
+        {/* <h5>Data pomiaru: {dataOpad[0].current.last_updated}</h5> */}
       </div>
       <div>
         {dataOpad.map((item, index) => {
@@ -41,8 +42,9 @@ const Wrapper = styled.section`
   margin: 15px;
   grid-row: 2;
   grid-column: 2;
-  .nazwa {
+  .info {
     display: flex;
+    flex-direction: column;
     /* justify-content: center; */
   }
 `

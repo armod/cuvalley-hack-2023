@@ -7,6 +7,7 @@ const hydro = 'https://danepubliczne.imgw.pl/api/data/hydro'
 const forecast_api =
   'http://api.weatherapi.com/v1/current.json?key=2b50cab1a05a42ed8a181320222612&q='
 const filePathHydro = './assets/hydro.xlsx'
+const dataPomiaru = ''
 
 const AppContext = React.createContext()
 
@@ -16,6 +17,8 @@ const AppProvider = ({ children }) => {
   const [dataOpad, setDataOpad] = useState([])
   const [dataHydroXLSX, setDataHydroXLSX] = useState([])
   const [dataMeteoXLSX, setDataMeteoXLSX] = useState([])
+  const [stanWodyGlogow, setStanWodyGlogow] = useState([])
+  const [stanWodyRaciborz, setStanWodyRaciborz] = useState('')
 
   // fetch
   const fetchDataMeteo = async () => {
@@ -30,8 +33,10 @@ const AppProvider = ({ children }) => {
   const fetchDataHydro = async () => {
     const response = await fetch(hydro)
     const data = await response.json()
-    // console.log(data)
+    console.log(data)
     setDataHydro(data)
+    setStanWodyGlogow(data.find((item) => item.id_stacji === '151160060'))
+    setStanWodyRaciborz(data.find((item) => item.id_stacji === '150180060'))
   }
 
   //fetch danych z forecast_api (dane meteo z imgw nie udostępniają wszystkich stacji) - dlatego uzyłem zewnętrznego źródła
@@ -69,7 +74,7 @@ const AppProvider = ({ children }) => {
     reader.onload = (e) => {
       const binary = '' + e.target.result
       const workbook = read(binary, { type: 'binary' })
-      const sheet = workbook.Sheets[workbook.SheetNames[0]]
+      const sheet = workbook.Sheets[workbook.SheetNames[1]]
       const jsonData = utils.sheet_to_json(sheet)
       setDataMeteoXLSX(jsonData)
       console.log(jsonData)
@@ -82,7 +87,7 @@ const AppProvider = ({ children }) => {
     // fetchDataMeteo()
     fetchDataHydro()
     fetchDataOpad()
-  }, [dataHydroXLSX])
+  }, [])
 
   return (
     <AppContext.Provider
@@ -93,6 +98,8 @@ const AppProvider = ({ children }) => {
         handleMeteoXLSX,
         dataHydroXLSX,
         dataMeteoXLSX,
+        stanWodyGlogow,
+        stanWodyRaciborz,
       }}
     >
       {children}

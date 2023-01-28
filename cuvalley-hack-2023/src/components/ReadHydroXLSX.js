@@ -11,6 +11,7 @@ const ReadHydroXLSX = () => {
         id='file-upload'
         type='file'
         onChange={(e) => {
+          e.preventDefault()
           if (e.target.files[0].name == 'hydro.xlsx') {
             handleHydroXLSX(e.target.files[0])
             console.log(e.target.files[0].name)
@@ -21,7 +22,7 @@ const ReadHydroXLSX = () => {
         Status:{' '}
         {dataHydroXLSX.length > 1
           ? 'Załadowano ' + dataHydroXLSX.length
-          : 'Nie załadowano pliku'}
+          : 'Nie załadowano odpowiedniego pliku'}
       </div>
       {/* <table>
         <thead>
