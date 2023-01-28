@@ -5,14 +5,56 @@ import data from '../assets/zlewnia-stacje'
 import ListHydro from './ListHydro'
 import daneHydro from '../assets/hydro'
 
+function filterArray(arr, num1, num2) {
+  var result = arr.filter(function (obj) {
+    if (obj.hasOwnProperty(num1) && obj.hasOwnProperty(num2)) {
+      return obj
+    } else if (obj.hasOwnProperty(num1) && !obj.hasOwnProperty(num2)) {
+      var closest = Infinity
+      var closestKey
+      for (var key in obj) {
+        if (Math.abs(key - num2) < closest) {
+          closest = Math.abs(key - num2)
+          closestKey = key
+        }
+      }
+      if (closestKey) {
+        return obj
+      }
+    }
+  })
+
+  if (result.length === 0) {
+    var closest = Infinity
+    var closestKey
+    var closestObject
+    for (var i = 0; i < arr.length; i++) {
+      var obj = arr[i]
+      for (var key in obj) {
+        if (Math.abs(key - num2) < closest) {
+          closest = Math.abs(key - num2)
+          closestKey = key
+          closestObject = obj
+        }
+      }
+    }
+    if (closestObject && closestObject.hasOwnProperty(num1)) {
+      result.push(closestObject)
+    }
+  }
+
+  var index = arr.indexOf(result[0])
+  var nextTen = arr.slice(index, index + 10)
+  return nextTen
+}
+
 const Hydro = () => {
   const { dataHydro, dataHydroXLSX, stanWodyGlogow, stanWodyRaciborz } =
     useGlobalContext()
   const len = dataHydroXLSX.length
-  const poziomWodyGlogow = stanWodyGlogow.stan_wody
-  const poziomWodyRaciborz = 202
-  // const poziomWodyRaciborz = stanWodyRaciborz.stan_wody
-  const tab = []
+  const poziomWodyGlogow = Number(stanWodyGlogow.stan_wody)
+  const poziomWodyRaciborz = Number(stanWodyRaciborz.stan_wody)
+  // const poziomWodyRaciborz = 202
 
   console.log('poziom', poziomWodyGlogow, poziomWodyRaciborz)
 
