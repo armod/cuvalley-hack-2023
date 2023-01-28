@@ -24,25 +24,6 @@ const ReadHydroXLSX = () => {
           ? 'Załadowano ' + dataHydroXLSX.length
           : 'Nie załadowano odpowiedniego pliku'}
       </div>
-      {/* <table>
-        <thead>
-          <tr>
-            {dataHydroXLSX.length > 0 &&
-              Object.keys(dataHydroXLSX[0]).map((key) => (
-                <th key={key}>{key}</th>
-              ))}
-          </tr>
-        </thead>
-        <tbody>
-          {dataHydroXLSX.map((row, index) => (
-            <tr key={index}>
-              {Object.values(row).map((cell, index) => (
-                <td key={index}>{cell}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
     </Wrapper>
   )
 }

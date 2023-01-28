@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import Hydro from '../components/Hydro'
-import Hydro2 from '../components/Hydro2'
 import Opad from '../components/Opad'
 import ReadHydroXLSX from '../components/ReadHydroXLSX'
 import ReadMeteoXLSX from '../components/ReadMeteoXLSX'
@@ -14,7 +13,6 @@ const Home = () => {
         <div className='underline'></div>
         <ReadMeteoXLSX />
       </div>
-      <Hydro2 />
       <Hydro />
       <Opad />
     </Wrapper>

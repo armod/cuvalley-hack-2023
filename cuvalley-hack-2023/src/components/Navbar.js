@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import ReadHydroXLSX from '../components/ReadHydroXLSX'
+import ReadMeteoXLSX from '../components/ReadMeteoXLSX'
 
 const Navbar = () => {
   const currentTime = new Date()
@@ -17,7 +19,7 @@ const Navbar = () => {
         {rok}-{miesiac > 10 ? miesiac : '0' + miesiac}-
         {dzien < 10 ? '0' + dzien : dzien}
       </div>
-      <ul>
+      {/* <ul>
         <li>
           <a href='#'>Zlewnia - stacje hydro</a>
         </li>
@@ -27,7 +29,12 @@ const Navbar = () => {
         <li>
           <a href='#'>Prognoza</a>
         </li>
-      </ul>
+      </ul> */}
+      <div className='read'>
+        <ReadHydroXLSX />
+        <div className='underline'></div>
+        <ReadMeteoXLSX />
+      </div>
     </Wrapper>
   )
 }
@@ -42,6 +49,14 @@ const Wrapper = styled.nav`
   border: 2px #de824e solid;
   border-radius: 15px;
   padding: 15px;
+  .read {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 300;
+  }
   .logo {
     background: #de824e;
   }

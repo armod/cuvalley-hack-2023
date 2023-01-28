@@ -41,8 +41,8 @@ const Hydro = () => {
   const [filteredArray, setFilteredArray] = useState([])
 
   const poziomWodyGlogow = Number(stanWodyGlogow.stan_wody)
-  // const poziomWodyRaciborz = Number(stanWodyRaciborz.stan_wody)
-  const poziomWodyRaciborz = 500
+  const poziomWodyRaciborz = Number(stanWodyRaciborz.stan_wody)
+  // const poziomWodyRaciborz = 500
 
   console.log('poziom', poziomWodyGlogow, poziomWodyRaciborz)
 
@@ -53,19 +53,23 @@ const Hydro = () => {
   return (
     <Wrapper>
       <div>
+        <div className='prognoza'>
+          Prognozowane dane poziomu rzeki na podstawie danych historycznych
+        </div>
         <button
+          className='btn'
           onClick={() =>
             handleFilter(dataHydroXLSX, poziomWodyGlogow, poziomWodyRaciborz)
           }
         >
-          Filter
+          Filtruj dane historyczne
         </button>
         {filteredArray.map((item, index) => {
           return (
-            <div key={index}>
+            <div key={index} className='filtered'>
               <h6>{item.__EMPTY}</h6>
-              <h6>{item['GŁOGÓW (151160060)']}</h6>
-              <h6>{item['RACIBÓRZ-MIEDONIA (150180060)']}</h6>
+              <h6>{item['GŁOGÓW (151160060)']} cm</h6>
+              <h6>{item['RACIBÓRZ-MIEDONIA (150180060)']} cm</h6>
             </div>
           )
         })}
@@ -150,6 +154,14 @@ const Wrapper = styled.section`
   margin: 15px;
   grid-column: 1;
   grid-row: 2;
+  .prognoza {
+    font-size: 1.2rem;
+  }
+  .filtered {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
   .info {
     border: 1px #de824e solid;
     display: flex;
