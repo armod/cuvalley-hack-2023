@@ -1,111 +1,53 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components/macro'
 import { useGlobalContext } from '../context'
 import data from '../assets/zlewnia-stacje'
 import ListHydro from './ListHydro'
 import daneHydro from '../assets/hydro'
 
-function findRecord(data, search1, search2) {
-  let closest = { diff: Number.MAX_VALUE }
-  for (let i = 0; i < data.length; i++) {
-    if (
-      data[i]['GŁOGÓW (151160060)'] === search1 &&
-      data[i]['RACIBÓRZ-MIEDONIA (150180060)'] === search2
-    ) {
-      console.log('oba', data[i])
-      return data[i]
-    }
-    let diff = Math.abs(data[i]['GŁOGÓW (151160060)'] - search1)
-    if (diff < closest.diff) {
-      closest = { diff: diff, index: i }
-    }
-  }
-  console.log(data[closest.index])
-  return data[closest.index]
-}
+function findRecords(data, searchValue1, searchValue2) {
+  var match = null
+  var closestMatch = null
+  var closestDiff = Number.MAX_VALUE
 
-function filterArray(arr, num1, num2) {
-  var result = arr.filter(function (obj) {
-    if (obj.hasOwnProperty(num1) && obj.hasOwnProperty(num2)) {
-      return obj
-    } else if (obj.hasOwnProperty(num1) && !obj.hasOwnProperty(num2)) {
-      var closest = Infinity
-      var closestKey
-      for (var key in obj) {
-        if (Math.abs(key - num2) < closest) {
-          closest = Math.abs(key - num2)
-          closestKey = key
-        }
-      }
-      if (closestKey) {
-        return obj
+  data.forEach(function (item) {
+    if (
+      item['GŁOGÓW (151160060)'] === searchValue1 &&
+      item['RACIBÓRZ-MIEDONIA (150180060)'] === searchValue2
+    ) {
+      match = item
+      // console.log(match)
+    } else if (item['GŁOGÓW (151160060)'] === searchValue1) {
+      var diff = Math.abs(item['RACIBÓRZ-MIEDONIA (150180060)'] - searchValue2)
+      if (diff < closestDiff) {
+        closestDiff = diff
+        closestMatch = item
       }
     }
   })
 
-  if (result.length === 0) {
-    var closest = Infinity
-    var closestKey
-    var closestObject
-    for (var i = 0; i < arr.length; i++) {
-      var obj = arr[i]
-      for (var key in obj) {
-        if (Math.abs(key - num2) < closest) {
-          closest = Math.abs(key - num2)
-          closestKey = key
-          closestObject = obj
-        }
-      }
-    }
-    if (closestObject && closestObject.hasOwnProperty(num1)) {
-      result.push(closestObject)
-    }
+  if (match === null) {
+    match = closestMatch
   }
 
-  var index = arr.indexOf(result[0])
-  var nextTen = arr.slice(index, index + 10)
-  console.log(nextTen)
-  return nextTen
-}
-
-function ResultTable({ filteredArray }) {
-  return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Key1</th>
-            <th>Key2</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredArray.map((item, index) => (
-            <tr key={index}>
-              <td>{item.key1}</td>
-              <td>{item.key2}</td>
-              <td>{item.value}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  )
+  var index = data.indexOf(match)
+  // console.log(data.slice(index, index + 10))
+  return data.slice(index, index + 10)
 }
 
 const Hydro = () => {
   const { dataHydro, dataHydroXLSX, stanWodyGlogow, stanWodyRaciborz } =
     useGlobalContext()
   const [filteredArray, setFilteredArray] = useState([])
-  const len = dataHydroXLSX.length
+
   const poziomWodyGlogow = Number(stanWodyGlogow.stan_wody)
-  const poziomWodyRaciborz = Number(stanWodyRaciborz.stan_wody)
-  // const poziomWodyRaciborz = 202
+  // const poziomWodyRaciborz = Number(stanWodyRaciborz.stan_wody)
+  const poziomWodyRaciborz = 500
 
   console.log('poziom', poziomWodyGlogow, poziomWodyRaciborz)
 
   const handleFilter = (arr, num1, num2) => {
-    setFilteredArray(findRecord(arr, num1, num2))
+    setFilteredArray(findRecords(arr, num1, num2))
   }
 
   return (
@@ -118,7 +60,16 @@ const Hydro = () => {
         >
           Filter
         </button>
-        {/* <ResultTable filteredArray={filteredArray} /> */}
+        {filteredArray.map((item, index) => {
+          return (
+            <div key={index}>
+              <h6>{item.__EMPTY}</h6>
+              <h6>{item['GŁOGÓW (151160060)']}</h6>
+              <h6>{item['RACIBÓRZ-MIEDONIA (150180060)']}</h6>
+            </div>
+          )
+        })}
+        {console.log('filtered:', filteredArray)}
       </div>
 
       <div className='info'>
