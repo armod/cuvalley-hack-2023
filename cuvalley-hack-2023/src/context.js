@@ -5,7 +5,7 @@ import stacjeMeteo from './zlewnia-stacje-meteo'
 const meteo = 'https://danepubliczne.imgw.pl/api/data/synop'
 const hydro = 'https://danepubliczne.imgw.pl/api/data/hydro'
 const forecast_api =
-  'http://api.weatherapi.com/v1/current.json?key=2b50cab1a05a42ed8a181320222612&q='
+  'https://api.weatherapi.com/v1/current.json?key=2b50cab1a05a42ed8a181320222612&q='
 
 const AppContext = React.createContext()
 
@@ -46,6 +46,7 @@ const AppProvider = ({ children }) => {
     )
     console.log(data)
     setDataOpad(data)
+
     // const response = await fetch(forecast_api + 'GLOGOW')
     // const data = await response.json()
     // setDataOpad(data)
