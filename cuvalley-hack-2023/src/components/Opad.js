@@ -20,10 +20,11 @@ const Opad = () => {
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
   return (
     <Wrapper>
-      <div className='info'>
-        <h2>Aktualna średnia suma opadów zlewni wynosi</h2>
-        {sumProperty(dataOpad, 'precip_mm')}
+      <div className='title'>
+        Aktualna średnia suma opadów zlewni wynosi
+        <span>{sumProperty(dataOpad, 'precip_mm')} mm</span>
       </div>
+      <div className='underline'></div>
       {dataOpad.map((item, index) => {
         const { name } = item.location
         const { precip_mm } = item.current
@@ -44,9 +45,13 @@ const Wrapper = styled.section`
   grid-row: 3;
   overflow-y: scroll;
   height: 300px;
-  .info {
+  .title {
     display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
+    justify-content: center;
+    font-size: 2rem;
+    font-style: italic;
+  }
+  span {
+    margin-left: 10px;
   }
 `
