@@ -4,25 +4,25 @@ import { useGlobalContext } from '../context'
 import data from '../zlewnia-stacje-meteo_'
 import ListOpad from '../components/ListOpad'
 
+const sumProperty = (arr, prop) => {
+  let sum = 0
+  for (let i = 0; i < arr.length; i++) {
+    sum = sum + arr[i]['current'][prop]
+  }
+  console.log(sum)
+  return (sum / arr.length).toFixed(2)
+}
+
 const Opad = () => {
   const { dataOpad } = useGlobalContext()
+  const sum = dataOpad
+    .map((num) => num * 2)
+    .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
   return (
     <Wrapper>
       <div className='info'>
-        <h2>Aktualna suma opadów zlewni</h2>
-        {/* <h5>Data pomiaru: {dataOpad[0].current.last_updated}</h5> */}
-      </div>
-      <div>
-        {dataOpad.map((item, index) => {
-          const { name } = item.location
-          if (name.toUpperCase() == 'GLOGOW') {
-            return (
-              <h2 key={index}>
-                Stacja: {name} {/* dla Głogowa */}
-              </h2>
-            )
-          }
-        })}
+        <h2>Aktualna średnia suma opadów zlewni wynosi</h2>
+        {sumProperty(dataOpad, 'precip_mm')}
       </div>
       {dataOpad.map((item, index) => {
         const { name } = item.location
@@ -40,8 +40,10 @@ const Wrapper = styled.section`
   border-radius: 15px;
   padding: 15px;
   margin: 15px;
-  grid-row: 2;
-  grid-column: 2;
+  grid-column: 1/3;
+  grid-row: 3;
+  overflow-y: scroll;
+  height: 300px;
   .info {
     display: flex;
     flex-direction: column;

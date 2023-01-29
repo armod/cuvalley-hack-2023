@@ -18,10 +18,10 @@ const ReadHydroXLSX = () => {
           }
         }}
       />
-      <div>
+      <div className='status'>
         Status:{' '}
         {dataHydroXLSX.length > 1
-          ? 'Załadowano ' + dataHydroXLSX.length
+          ? 'Załadowano ' + dataHydroXLSX.length + ' rekordów'
           : 'Nie załadowano odpowiedniego pliku'}
       </div>
     </Wrapper>
@@ -33,4 +33,8 @@ export default ReadHydroXLSX
 const Wrapper = styled.section`
   grid-column: 1/2;
   grid-row: 1;
+  .status {
+    font-style: italic;
+    font-size: 0.85rem;
+  }
 `

@@ -145,7 +145,7 @@ const Wrapper = styled.section`
   border-radius: 15px;
   padding: 15px;
   margin: 15px;
-  grid-column: 1;
+  grid-column: 1/3;
   grid-row: 2;
   height: auto;
   h6 {

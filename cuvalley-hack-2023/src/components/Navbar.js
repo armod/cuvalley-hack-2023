@@ -4,10 +4,6 @@ import ReadHydroXLSX from '../components/ReadHydroXLSX'
 import ReadMeteoXLSX from '../components/ReadMeteoXLSX'
 
 const Navbar = () => {
-  const currentTime = new Date()
-  const rok = currentTime.getFullYear()
-  const miesiac = currentTime.getMonth() + 1
-  const dzien = currentTime.getDate()
   return (
     <Wrapper>
       <img
@@ -15,21 +11,6 @@ const Navbar = () => {
         src='https://cuvalley.com/wp-content/uploads/2021/04/CuValley_logo_top_1.png'
         alt='logo'
       />
-      <div className='data'>
-        {rok}-{miesiac > 10 ? miesiac : '0' + miesiac}-
-        {dzien < 10 ? '0' + dzien : dzien}
-      </div>
-      {/* <ul>
-        <li>
-          <a href='#'>Zlewnia - stacje hydro</a>
-        </li>
-        <li>
-          <a href='#'>Zlewnia - stacje meteo</a>
-        </li>
-        <li>
-          <a href='#'>Prognoza</a>
-        </li>
-      </ul> */}
       <div className='read'>
         <ReadHydroXLSX />
         <div className='underline'></div>
@@ -43,12 +24,14 @@ export default Navbar
 
 const Wrapper = styled.nav`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   margin: 5px;
   border: 2px #de824e solid;
   border-radius: 15px;
   padding: 15px;
+  background: #1e2d52;
+  color: #fff;
   .read {
     display: flex;
     flex-direction: column;
@@ -58,7 +41,9 @@ const Wrapper = styled.nav`
     font-weight: 300;
   }
   .logo {
-    background: #de824e;
+    /* background: #de824e; */
+    /* height: 2rem; */
+    /* transform: scale(2); */
   }
   .data {
     margin-right: 2rem;

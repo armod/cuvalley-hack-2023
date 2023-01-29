@@ -43,6 +43,7 @@ const Wrapper = styled.section`
   padding: 15px;
   margin: 15px;
   grid-column: 1/3;
+  grid-row: 1;
   .title {
     display: flex;
     justify-content: center;
