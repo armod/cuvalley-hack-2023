@@ -3,7 +3,6 @@ import styled from 'styled-components/macro'
 import { useGlobalContext } from '../context'
 import data from '../assets/zlewnia-stacje'
 import ListHydro from './ListHydro'
-import daneHydro from '../assets/hydro'
 
 function findRecords(data, searchValue1, searchValue2) {
   var match = null
@@ -44,43 +43,63 @@ const Hydro = () => {
   const poziomWodyRaciborz = Number(stanWodyRaciborz.stan_wody)
   // const poziomWodyRaciborz = 500
 
-  console.log('poziom', poziomWodyGlogow, poziomWodyRaciborz)
+  // console.log('poziom', poziomWodyGlogow, poziomWodyRaciborz)
 
   const handleFilter = (arr, num1, num2) => {
     setFilteredArray(findRecords(arr, num1, num2))
   }
-
+  function increaseDate(daysToAdd) {
+    var currentDate = new Date()
+    currentDate.setDate(currentDate.getDate() + daysToAdd)
+    var options = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }
+    var updatedDate = currentDate.toLocaleDateString('pl-PL', options)
+    return updatedDate
+  }
   return (
     <Wrapper>
       <div>
-        <div className='prognoza'>
-          Prognozowane dane poziomu rzeki na podstawie danych historycznych
-        </div>
         <button
           className='btn'
           onClick={() =>
             handleFilter(dataHydroXLSX, poziomWodyGlogow, poziomWodyRaciborz)
           }
         >
-          Filtruj dane historyczne
+          Generuj prognozę
         </button>
+        <div className='prognoza'>
+          Prognozowane dane poziomu rzeki na podstawie danych historycznych (od
+          dzisiaj + 9 dni)
+          <div className='filtered'>
+            <span>Data</span>
+            <span>Poziom Głogów</span>
+            <span>Poziom Racibórz</span>
+            <span>Data historyczna</span>
+          </div>
+        </div>
+
         {filteredArray.map((item, index) => {
+          let data = increaseDate(index)
           return (
             <div key={index} className='filtered'>
-              <h6>{item.__EMPTY}</h6>
+              <h6>{data}</h6>
               <h6>{item['GŁOGÓW (151160060)']} cm</h6>
               <h6>{item['RACIBÓRZ-MIEDONIA (150180060)']} cm</h6>
+              <h6>{item.__EMPTY}</h6>
             </div>
           )
         })}
-        {console.log('filtered:', filteredArray)}
+        {/* {console.log('filtered:', filteredArray)} */}
       </div>
 
       <div className='info'>
         <h2>Zlewnia - stacje hydrologiczne</h2>
         {/* <h5>Data pomiaru: {dataPomiaru}</h5> */}
       </div>
-      <div>
+      <div className='stany-aktualne'>
         {dataHydro.map((item) => {
           const { id_stacji, stacja, stan_wody } = item
           if (id_stacji === '151160060') {
@@ -115,31 +134,6 @@ const Hydro = () => {
             }
           })}
         </div>
-        <div className='list2'>
-          {daneHydro.map((item, index) => {
-            const { id_151160060, id_150180060, data } = item
-            if (
-              id_151160060 == poziomWodyGlogow &&
-              id_150180060 == poziomWodyRaciborz
-            ) {
-              return (
-                <div key={index}>
-                  <h4>!{data}</h4>
-                  <h5>Głogów: {id_151160060}</h5>
-                  <h5>Racibórz: {id_150180060}</h5>
-                </div>
-              )
-            } else if (id_151160060 == poziomWodyGlogow) {
-              return (
-                <div key={index}>
-                  <h4>{data}</h4>
-                  <h5>Głogów: {id_151160060}</h5>
-                  <h5>Racibórz: {id_150180060}</h5>
-                </div>
-              )
-            }
-          })}
-        </div>
       </div>
     </Wrapper>
   )
@@ -154,13 +148,23 @@ const Wrapper = styled.section`
   margin: 15px;
   grid-column: 1;
   grid-row: 2;
+
+  h6 {
+  }
   .prognoza {
     font-size: 1.2rem;
+    margin-bottom: 10px;
   }
   .filtered {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border-bottom: #de824e 2px dotted;
+    margin-bottom: 3px;
+    span {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
   }
   .info {
     border: 1px #de824e solid;

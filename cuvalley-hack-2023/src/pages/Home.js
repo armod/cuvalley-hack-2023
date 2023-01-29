@@ -2,10 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import Hydro from '../components/Hydro'
 import Opad from '../components/Opad'
+import StanAktualny from '../components/StanAktualny'
 
 const Home = () => {
   return (
     <Wrapper>
+      <StanAktualny />
       <Hydro />
       <Opad />
     </Wrapper>

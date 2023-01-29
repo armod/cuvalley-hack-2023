@@ -18,7 +18,7 @@ const AppProvider = ({ children }) => {
   const [dataHydroXLSX, setDataHydroXLSX] = useState([])
   const [dataMeteoXLSX, setDataMeteoXLSX] = useState([])
   const [stanWodyGlogow, setStanWodyGlogow] = useState([])
-  const [stanWodyRaciborz, setStanWodyRaciborz] = useState('')
+  const [stanWodyRaciborz, setStanWodyRaciborz] = useState([])
 
   // fetch
   const fetchDataMeteo = async () => {
