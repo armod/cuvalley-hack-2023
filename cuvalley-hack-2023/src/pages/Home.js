@@ -2,17 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import Hydro from '../components/Hydro'
 import Opad from '../components/Opad'
-import ReadHydroXLSX from '../components/ReadHydroXLSX'
-import ReadMeteoXLSX from '../components/ReadMeteoXLSX'
 
 const Home = () => {
   return (
     <Wrapper>
-      <div className='load-files'>
-        <ReadHydroXLSX />
-        <div className='underline'></div>
-        <ReadMeteoXLSX />
-      </div>
       <Hydro />
       <Opad />
     </Wrapper>

@@ -9,7 +9,7 @@ const Opad = () => {
   return (
     <Wrapper>
       <div className='info'>
-        <h2>Zlewnia - stacje meteorologiczne</h2>
+        <h2>Aktualna suma opadów zlewni</h2>
         {/* <h5>Data pomiaru: {dataOpad[0].current.last_updated}</h5> */}
       </div>
       <div>

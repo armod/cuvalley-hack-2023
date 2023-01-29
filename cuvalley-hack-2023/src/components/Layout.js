@@ -3,9 +3,11 @@ import Navbar from './Navbar'
 import '../assets/css/styles.css'
 import Footer from './Footer'
 import styled from 'styled-components/macro'
+import Title from './Title'
 const Layout = ({ children }) => {
   return (
     <Wrapper>
+      <Title />
       <Navbar />
       {children}
       <Footer />
