@@ -95,9 +95,8 @@ const Hydro = () => {
         {/* {console.log('filtered:', filteredArray)} */}
       </div>
 
-      <div className='info'>
+      {/* <div className='info'>
         <h2>Zlewnia - stacje hydrologiczne</h2>
-        {/* <h5>Data pomiaru: {dataPomiaru}</h5> */}
       </div>
       <div className='stany-aktualne'>
         {dataHydro.map((item) => {
@@ -105,7 +104,7 @@ const Hydro = () => {
           if (id_stacji === '151160060') {
             return (
               <h3 key={id_stacji}>
-                {stacja} {/* dla Głogowa */}
+                {stacja}
                 <span> </span>- stan wody: {stan_wody}cm
               </h3>
             )
@@ -113,15 +112,15 @@ const Hydro = () => {
           if (id_stacji === '150180060') {
             return (
               <h3 key={id_stacji}>
-                {stacja} {/* dla Raciborza */}
+                {stacja}
                 <span> </span>- stan wody: {stan_wody}cm
               </h3>
             )
           }
         })}
-      </div>
+      </div> */}
 
-      <div className='lists'>
+      {/* <div className='lists'>
         <div className='list1'>
           {dataHydro.map((item) => {
             const { id_stacji, stacja, stan_wody } = item
@@ -134,7 +133,7 @@ const Hydro = () => {
             }
           })}
         </div>
-      </div>
+      </div> */}
     </Wrapper>
   )
 }

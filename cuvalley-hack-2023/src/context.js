@@ -39,7 +39,7 @@ const AppProvider = ({ children }) => {
     setStanWodyRaciborz(data.find((item) => item.id_stacji === '150180060'))
   }
 
-  //fetch danych z forecast_api (dane meteo z imgw nie udostępniają wszystkich stacji) - dlatego uzyłem zewnętrznego źródła
+  //fetch danych z forecast_api (dane meteo z imgw nie udostępniają wszystkich stacji) - dlatego uzywam zewnętrznego źródła
   const fetchDataOpad = async () => {
     const data = await Promise.all(
       stacjeMeteo.map((stacja) =>
