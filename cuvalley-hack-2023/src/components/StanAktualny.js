@@ -20,6 +20,18 @@ const StanAktualny = () => {
   return (
     <Wrapper>
       <div className='title'>Aktualne poziomy wody w rzece ({data})</div>
+
+      <div className='source'>
+        <h6>
+          Dane pochodzą z:
+          <a
+            href='https://danepubliczne.imgw.pl/api/data/hydro/'
+            title='imgw.pl'
+          >
+            IMGW.pl
+          </a>
+        </h6>
+      </div>
       <div className='underline'></div>
       <div className='stan-aktualny'>
         <div>
@@ -44,6 +56,10 @@ const Wrapper = styled.section`
   margin: 15px;
   grid-column: 1/3;
   grid-row: 1;
+  .source {
+    display: flex;
+    justify-content: center;
+  }
   .title {
     display: flex;
     justify-content: center;

@@ -24,6 +24,14 @@ const Opad = () => {
         Aktualna średnia suma opadów zlewni wynosi
         <span>{sumProperty(dataOpad, 'precip_mm')} mm</span>
       </div>
+      <div className='source'>
+        <h6>
+          Dane pochodzą z:
+          <a href='https://www.weatherapi.com/' title='Free Weather API'>
+            Free Weather API
+          </a>
+        </h6>
+      </div>
       <div className='underline'></div>
       {dataOpad.map((item, index) => {
         const { name } = item.location
@@ -45,6 +53,10 @@ const Wrapper = styled.section`
   grid-row: 3;
   overflow-y: scroll;
   height: 300px;
+  .source {
+    display: flex;
+    justify-content: center;
+  }
   .title {
     display: flex;
     justify-content: center;

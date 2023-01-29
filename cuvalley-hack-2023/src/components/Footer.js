@@ -23,6 +23,8 @@ const Wrapper = styled.footer`
   border: 2px #de824e solid;
   border-radius: 15px;
   padding: 15px;
+  background: #1e2d52;
+  color: #fff;
   span {
     color: #de824e;
   }
