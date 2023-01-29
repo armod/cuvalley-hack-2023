@@ -46,7 +46,7 @@ const AppProvider = ({ children }) => {
         fetch(forecast_api + stacja).then((res) => res.json())
       )
     )
-    // console.log(data)
+    console.log(data)
     setDataOpad(data)
     // const response = await fetch(forecast_api + 'GLOGOW')
     // const data = await response.json()

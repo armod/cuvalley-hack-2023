@@ -147,7 +147,7 @@ const Wrapper = styled.section`
   margin: 15px;
   grid-column: 1;
   grid-row: 2;
-
+  height: auto;
   h6 {
   }
   .prognoza {
